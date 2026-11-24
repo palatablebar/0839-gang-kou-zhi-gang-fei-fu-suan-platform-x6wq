@@ -1,12 +1,13 @@
-from datetime import date, timedelta
 from app.catalog import SPEC
+from app.corrections.calendar import base_holidays
 from app.domain.helpers import *  # noqa: F401,F403
 
 
-def calculate_rows(items):
+def calculate_rows(items, holidays=None):
     out = []
     rows = items
-    holidays = {date(2026, 10, d) for d in range(1, 8)} | {date(2026, 1, 1), date(2026, 1, 2), date(2026, 1, 3)}
+    if holidays is None:
+        holidays = base_holidays()
     for item in items:
         deadline = business_days_after(item["gate_in"], item["free_days"], holidays)
         charge_days = max(0, (item["gate_out"] - deadline).days)

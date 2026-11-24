@@ -39,6 +39,32 @@
         </div>
       </div>
     </article>
+    <article class="panel" id="panel-correction">
+      <div class="panel-head"><h2>休港补证复算更正</h2><span class="hint" id="correction-hint">先执行并签发批次</span></div>
+      <div class="review">
+        <label for="doc-id">补证编号 doc_id（重跑同号幂等）</label>
+        <input id="doc-id" type="text" placeholder="例如 SUP-20261124-01" disabled>
+        <label for="closures">休港日期（每行一条：YYYY-MM-DD,CONFIRMED 或 PENDING,备注）</label>
+        <textarea id="closures" class="closures" placeholder="2026-11-05,CONFIRMED,台风休港&#10;2026-11-06,PENDING,港方核对中" disabled></textarea>
+        <div class="review-actions">
+          <button id="corr-preview" type="button" disabled>复算预览</button>
+          <button id="corr-sign" type="button" disabled>更正签发</button>
+          <button id="corr-hold" type="button" disabled>保留原账</button>
+        </div>
+        <p class="hint" id="corr-notice"></p>
+        <div class="table-wrap">
+          <table class="corr-table">
+            <thead><tr><th>箱号</th><th>动作</th><th>原账(分)</th><th>现账(分)</th><th>本次差额</th><th>累计差额</th><th>免堆截止</th><th>待核影响</th></tr></thead>
+            <tbody id="corr-body"><tr><td class="empty" colspan="8">暂无更正计划</td></tr></tbody>
+          </table>
+        </div>
+        <div class="ledger" id="corr-summary"></div>
+        <div class="evidence-versions">
+          <h3>证据版本（旧版原样可下载）</h3>
+          <ul id="evidence-list"><li class="empty">签发后显示</li></ul>
+        </div>
+      </div>
+    </article>
   </section>
 </main>
 {% endblock %}

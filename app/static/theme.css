@@ -69,8 +69,16 @@
 .p0839 details summary { cursor:pointer; color:var(--accent); }
 .p0839 details ul { padding-left:1em; }
 .p0839 .verdict { font-size: 11px; font-weight: 700; letter-spacing: .04em; }
-.p0839 .verdict[data-v="PASS"] { color: var(--accent); }
-.p0839 .verdict[data-v="REVIEW"], .p0839 .verdict[data-v="REJECT"] { color: var(--danger); }
+.p0839 .verdict[data-v="PASS"], .p0839 .verdict[data-v="BOOKED"] { color: var(--accent); }
+.p0839 .verdict[data-v="REVIEW"], .p0839 .verdict[data-v="REJECT"], .p0839 .verdict[data-v="HELD"] { color: var(--danger); }
+.p0839 .verdict[data-v="UNCHANGED"] { color: var(--muted); }
+.p0839 #panel-correction { grid-column: 1/-1; }
+.p0839 .closures { min-height: 78px; font-family: var(--font-num); }
+.p0839 .corr-table td, .p0839 .corr-table th { font-size: 12px; }
+.p0839 .evidence-versions h3 { margin: 10px 0 6px; font-size: 13px; color: var(--muted); }
+.p0839 .evidence-versions ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 5px; }
+.p0839 .evidence-versions li { display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px dashed var(--line); padding: 4px 0; }
+.p0839 .evidence-versions code { color: var(--muted); font-size: 11px; }
 .p0839 .issues { list-style: none; margin: 0; padding: 0; display: grid; gap: 5px; max-height: 330px; overflow: auto; }
 .p0839 .issues li { display: grid; grid-template-columns: 3.5em 1fr auto; gap: 8px; border-bottom: 1px dashed var(--line); padding: 5px 0; }
 .p0839 .issues li.empty { display:block; }

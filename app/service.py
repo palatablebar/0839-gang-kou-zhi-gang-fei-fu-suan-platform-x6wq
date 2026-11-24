@@ -1,4 +1,3 @@
-import json
 from decimal import Decimal
 from pathlib import Path
 
@@ -61,6 +60,13 @@ def pipeline(profile="dirty", path=None, upto="证据交付"):
                          if key in {"label", "verdict", "reason", "metric", "limit", "status", "state", "breakdown"}
                          or key in SPEC["columns"] or key in SPEC["result_columns"]})
     source = {"profile": profile, "filename": Path(intake["path"]).name, "sha256": intake["sha256"]}
+    base_rows = []
+    for item in results:
+        if "container_id" not in item:
+            continue
+        base_rows.append({key: item.get(key) for key in
+                          ("container_id", "gate_in", "gate_out", "free_days", "invoice_cents",
+                           "free_end", "charge_days", "fee_cents")})
     payload = {
         "project": SPEC["code"] + " " + SPEC["name"],
         "rule": SPEC["rule_short"],
@@ -73,6 +79,7 @@ def pipeline(profile="dirty", path=None, upto="证据交付"):
         "chart": chart,
         "summary": summary,
         "ledger": ledger,
+        "base_rows": jsonable(base_rows),
         "stages": [{"id": "intake", "name": SPEC["stages"][0]},
                    {"id": "prepare", "name": SPEC["stages"][1]},
                    {"id": "calculate", "name": SPEC["stages"][2]},

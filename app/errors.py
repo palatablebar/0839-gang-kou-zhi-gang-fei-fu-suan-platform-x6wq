@@ -18,6 +18,16 @@ MESSAGES = {
     "GATE_BLOCKED": "存在阻断项，不能签发",
     "NOT_APPROVED": "批次尚未签发",
     "BAD_REQUEST": "请求内容不完整",
+    "BAD_CLOSURE_DATE": "休港日期不是合法 ISO 日期",
+    "BAD_CLOSURE_STATUS": "休港日期状态只能是 CONFIRMED 或 PENDING",
+    "DOC_ID_MISSING": "补证缺少 doc_id，无法做幂等登记",
+    "DOC_CONTENT_CONFLICT": "同一 doc_id 已登记且内容不一致，拒绝覆盖",
+    "CLOSURES_EMPTY": "补证未携带任何休港日期",
+    "CORRECTION_NOT_FOUND": "更正记录不存在",
+    "CORRECTION_PENDING_HELD": "存在待核日期会改变免堆截止日或应收金额，先保留原账",
+    "CORRECTION_UNBALANCED": "更正差额未通过累计守恒校验，已保留原账",
+    "EVIDENCE_NOT_FOUND": "该证据版本不存在",
+    "RUN_NO_BASE_ROWS": "批次缺少可复算的箱单",
 }
 
 
